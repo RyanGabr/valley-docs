@@ -215,13 +215,24 @@ export function LayoutDocs() {
         </div>
       </div>
       <div className="flex">
-        <div className="hidden w-72 h-screen fixed top-0 left-0 lg:flex flex-col p-10 justify-center space-y-10">
-          <div className="font-semibold text-2xl px-4 cursor-default">valley</div>
+        <div className="hidden w-72 h-screen fixed top-0 left-0 lg:flex flex-col p-10 justify-start space-y-10 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-foreground/5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-foreground/10">
+          <div>
+            <Button
+              onClick={toggleTheme}
+              variant="ghost"
+              className="cursor-pointer hidden lg:block rounded-full"
+            >
+              {theme === "light" ? <Moon /> : theme === "dark" ? <Sun /> : ""}
+            </Button>
+          </div>
           <a
             href="/"
-            className="flex items-center text-foreground/50 px-4 group w-fit"
+            className="flex items-center text-foreground/50 px-4 group w-fit font-medium"
           >
-            <ArrowLeft size={18} className="mr-3 group-hover:mr-1 transition-all"/>
+            <ArrowLeft
+              size={18}
+              className="mr-3 group-hover:mr-1 transition-all"
+            />
             Home
           </a>
           <div className="flex flex-col gap-3">
@@ -287,17 +298,8 @@ export function LayoutDocs() {
               ))}
             </ul>
           </div>
-          <div>
-            <Button
-              onClick={toggleTheme}
-              variant="ghost"
-              className="cursor-pointer hidden lg:block w-fit"
-            >
-              {theme === "light" ? <Moon /> : theme === "dark" ? <Sun /> : ""}
-            </Button>
-          </div>
         </div>
-        <main className="flex-1 lg:ml-72 xl:ml-96 mt-20 lg:mt-0 p-7 lg:p-20">
+        <main className="flex-1 lg:ml-72 xl:ml-96 lg:mt-0 p-7 lg:p-20">
           <Outlet />
         </main>
       </div>
